@@ -1,6 +1,6 @@
 # SIRP & MISP Demo
-Hey there, here are the guide as well working PoC to up and run SIRP & MISP using The Hive Project,Cortex & MISP Project.
-This repository intended to provide references for me as well my production team. Feel free to use it for education purpose.
+Hey there, here are the guide as well working PoC to up and run SIRP & MISP using [The Hive Project](https://thehive-project.org/),[Cortex](https://thehive-project.org/) & [MISP Project](https://www.misp-project.org).
+This repository intended to provide references for me as well my SOC & CIRT team. Feel free to use it for education purpose.
 
 ## Requirements
 * Vagrant
@@ -13,3 +13,5 @@ This repository intended to provide references for me as well my production team
 * [MISP Setup](https://github.com/malikperang/sirp_misp_demo/blob/master/misp-vagrant/INSTALLATION.md)
 
 
+## Disclaimer!
+This demo are still in development mode, information and stabilization will be updated from time to time.
