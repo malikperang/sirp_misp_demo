@@ -1,0 +1,6 @@
+.idea
+.thehive-vagrant/data
+.vagrant
+.thehive-vagrant/.vagrant
+.cortex-vagrant/.vagrant
+.misp-vagrant/.vagrant

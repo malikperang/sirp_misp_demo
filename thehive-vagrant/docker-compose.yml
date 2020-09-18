@@ -1,0 +1,34 @@
+version: "2"
+services:
+  elasticsearch:
+    image: elasticsearch:6.8.8
+    environment:
+      - http.host=0.0.0.0
+      - transport.host=0.0.0.0
+      - xpack.security.enabled=false
+      - cluster.name=hive
+      - script.inline=true
+      - thread_pool.index.queue_size=100000
+      - thread_pool.search.queue_size=100000
+      - thread_pool.bulk.queue_size=100000
+      - vm.max_map_count=262144
+    volumes:
+      - ./data:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+  cortex:
+    image: thehiveproject/cortex:latest
+    depends_on:
+      - elasticsearch
+    ports:
+      - "0.0.0.0:9001:9001"
+  # thehive:
+  #   image: thehiveproject/thehive:latest
+  #   depends_on:
+  #     - elasticsearch
+  #     - cortex
+  #   ports:
+  #     - "0.0.0.0:9000:9000"
+  #   command: --cortex-port 9001
+  #   volumes:
+  #     - ./conf/application.conf:/etc/thehive/application.conf
