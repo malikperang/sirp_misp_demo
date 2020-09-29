@@ -2,8 +2,10 @@
 # vi: set ft=ruby :
 
 $installTheHive = <<-SCRIPT
- sudo yum install https://dl.bintray.com/thehive-project/rpm-stable/thehive-project-release-1.1.0-2.noarch.rpm -y
- sudo yum install thehive -y
+ 	echo 'deb https://dl.bintray.com/thehive-project/debian-stable any main' | sudo tee -a /etc/apt/sources.list.d/thehive-project.list
+	curl https://raw.githubusercontent.com/TheHive-Project/TheHive/master/PGP-PUBLIC-KEY | sudo apt-key add -
+	sudo apt-get update -y
+	sudo apt-get install thehive -y
 SCRIPT
 
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
@@ -45,7 +47,8 @@ Vagrant.configure("2") do |config|
 	# Bridged networks make the machine appear as another physical device on
 	# your network.
 	# config.vm.network "public_network"
-	config.vm.network "public_network", bridge: "en1: Wi-Fi (AirPort)"
+	config.vm.network "public_network", bridge: "en0: Wi-Fi (AirPort)"
+	config.vm.network "public_network", ip: "192.168.100.100"
 
 	# Share an additional folder to the guest VM. The first argument is
 	# the path on the host to the actual folder. The second argument is
@@ -73,4 +76,8 @@ Vagrant.configure("2") do |config|
 		# Customize the amount of memory on the VM:
 		vb.memory = "1092"
   	end
+
+  	#config.ssh.guest_port=2202
+
+  	config.vm.provision "shell", inline: $installTheHive
 end

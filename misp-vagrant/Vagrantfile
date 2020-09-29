@@ -3,7 +3,7 @@
 
 $installMISP = <<-SCRIPT
     wget -O /tmp/INSTALL.sh https://raw.githubusercontent.com/MISP/MISP/2.4/INSTALL/INSTALL.sh
-    bash /tmp/INSTALL.sh -a
+    bash /tmp/INSTALL.sh -A
 SCRIPT
 
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
@@ -75,4 +75,8 @@ Vagrant.configure("2") do |config|
     # Customize the amount of memory on the VM:
     vb.memory = "1092"
   end
+
+  #config.ssh.guest_port=2200
+
+  #config.vm.provision "shell", inline: $installMISP
 end

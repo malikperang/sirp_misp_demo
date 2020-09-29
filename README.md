@@ -12,6 +12,18 @@ This repository intended to provide references for me as well my SOC & CIRT team
 * [Cortex Setup](https://github.com/malikperang/sirp_misp_demo/blob/master/cortex-vagrant/INSTALLATION.md)
 * [MISP Setup](https://github.com/malikperang/sirp_misp_demo/blob/master/misp-vagrant/INSTALLATION.md)
 
+## Summary
+* Elasticsearch URL: `http://<host-machine-ip>:9200` or `http://127.0.0.1:9200`
+* Kibana URL: `http://<host-machine-ip>:5601` or `http://127.0.0.1:5601`
+* The Hive URL: `http://192.168.90.90:9000` or `http://thehive-master1.vm:9000`
+* Cortex URL: `http://`
+* MISP URL: 
+
+## Getting Started
+Run the bash executable file to up all Vagrant VM's
+```
+$ ./up.sh
+```
 
 ## Disclaimer!
 This demo are still in development mode, information and stabilization will be updated from time to time.

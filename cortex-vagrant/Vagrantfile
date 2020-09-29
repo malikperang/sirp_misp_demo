@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 $installCortex = <<-SCRIPT
-    echo 'deb https://deb.thehive-project.org/ stable main' | sudo tee -a /etc/apt/sources.list.d/thehive-project.list -y
+    echo 'deb https://deb.thehive-project.org/ stable main' | sudo tee -a /etc/apt/sources.list.d/thehive-project.list
     curl https://download.thehive-project.org/PGP-PUBLIC-KEY | sudo apt-key add -
     sudo apt-get update -y
     sudo apt-get install cortex -y
@@ -20,7 +20,7 @@ Vagrant.configure("2") do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
   config.vm.box = "bento/ubuntu-18.04"
-  config.vm.hostname = "cortex-master1"
+  config.vm.hostname = "cortex-master1.vm"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -74,4 +74,8 @@ Vagrant.configure("2") do |config|
     # Customize the amount of memory on the VM:
     vb.memory = "1092"
   end
+
+  #config.ssh.guest_port=2201
+
+  config.vm.provision "shell", inline: $installCortex
 end
