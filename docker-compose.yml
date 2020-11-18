@@ -4,7 +4,7 @@ services:
 
   elasticsearch:
     build:
-      context: elasticsearch/
+      context: elasticsearch
       args:
         ELK_VERSION: $ELK_VERSION
     volumes:
@@ -19,7 +19,7 @@ services:
 
   kibana:
     build:
-      context: kibana/
+      context: kibana
       args:
         ELK_VERSION: $ELK_VERSION
     volumes:

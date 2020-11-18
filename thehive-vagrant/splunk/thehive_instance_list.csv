@@ -1,4 +1,0 @@
-thehive_instance,thehive_url,thehive_api_key_name,thehive_verifycert,thehive_ca_full_path,thehive_use_proxy,client_use_cert,client_cert_full_path
-th_development,https://localhost:9000,thehive_api_key1,TRUE,,FALSE,FALSE,
-th_staging,https://localhost:9000,thehive_api_key2,TRUE,,FALSE,FALSE,
-th_prod,https://localhost:9000,thehive_api_key3,TRUE,,FALSE,FALSE,
