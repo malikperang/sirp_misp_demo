@@ -4,3 +4,4 @@
 .thehive-vagrant/.vagrant
 .cortex-vagrant/.vagrant
 .misp-vagrant/.vagrant
+.elasticsearch/data01

@@ -2,47 +2,60 @@ version: '2'
 
 services:
   elasticsearch:
+    container_name: elasticsearch1
     build:
       context: elasticsearch
       args:
         ELK_VERSION: $ELK_VERSION
     volumes:
-      - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+      - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./elasticsearch/data01:/usr/share/elasticsearch/data
     ports:
       - "9200:9200"
       - "9300:9300"
     environment:
       ES_JAVA_OPTS: "-Xmx256m -Xms256m"
     networks:
-      - misp-demo
+      - sirp_demo
   kibana:
+    container_name: kibana1
     build:
       context: kibana
       args:
         ELK_VERSION: $ELK_VERSION
     volumes:
-      - ./kibana/config/:/usr/share/kibana/config:ro
+      - ./kibana/config/:/usr/share/kibana/config
     ports:
       - "5601:5601"
     networks:
-      - misp-demo
+      - sirp_demo
     depends_on:
       - elasticsearch
   cortex:
-    image: thehiveproject/cortex:latest
+    container_name: cortex1
+    image: thehiveproject/cortex:3.0.1
     depends_on:
       - elasticsearch
     ports:
       - "0.0.0.0:9001:9001"
+    volumes:
+      - ./cortex/conf/application.conf:/etc/cortex/application.conf
+    networks:
+      - sirp_demo
   thehive:
-    image: thehiveproject/thehive:latest
+    container_name: thehive1
+    image: thehiveproject/thehive:3.4.4
     depends_on:
       - elasticsearch
-      - cortex
+      # - cortex
     ports:
       - "0.0.0.0:9000:9000"
+    volumes:
+      - ./thehive/conf/application.conf:/etc/thehive/application.conf
     command: --cortex-port 9001
+    networks:
+      - sirp_demo
 
 networks:
-  misp-demo:
+  sirp_demo:
     driver: bridge
