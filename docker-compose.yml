@@ -9,7 +9,7 @@ services:
         ELK_VERSION: $ELK_VERSION
     volumes:
       - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
-      - ./elasticsearch/data01:/usr/share/elasticsearch/data
+      - ./elasticsearch/data01:/usr/share/elasticsearch/data:rw
     ports:
       - "9200:9200"
       - "9300:9300"
