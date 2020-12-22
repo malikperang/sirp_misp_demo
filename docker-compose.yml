@@ -47,12 +47,12 @@ services:
     image: thehiveproject/thehive:3.4.4
     depends_on:
       - elasticsearch
-      # - cortex
+      - cortex
     ports:
       - "0.0.0.0:9000:9000"
     volumes:
       - ./thehive/conf/application.conf:/etc/thehive/application.conf
-    command: --cortex-port 9001
+    command: --cortex-port 9001 --cortex-key RBMaKwiDVEjxnX04/CLP5ILtbfnfCoI3
     networks:
       - sirp_demo
 
