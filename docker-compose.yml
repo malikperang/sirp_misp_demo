@@ -40,6 +40,7 @@ services:
       - "0.0.0.0:9001:9001"
     volumes:
       - ./cortex/conf/application.conf:/etc/cortex/application.conf
+      - ./cortex/Cortex-Analyzers:/opt/Cortex-Analyzers
     networks:
       - sirp_demo
   thehive:
@@ -52,7 +53,7 @@ services:
       - "0.0.0.0:9000:9000"
     volumes:
       - ./thehive/conf/application.conf:/etc/thehive/application.conf
-    command: --cortex-port 9001 --cortex-key RBMaKwiDVEjxnX04/CLP5ILtbfnfCoI3
+    #command: --cortex-port 9001 --cortex-key RBMaKwiDVEjxnX04/CLP5ILtbfnfCoI3
     networks:
       - sirp_demo
 
